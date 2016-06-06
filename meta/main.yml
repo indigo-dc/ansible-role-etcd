@@ -1,0 +1,15 @@
+galaxy_info:
+  author: marica.antonacci@gmail.com
+  description: Configure and run dockerized etcd
+  company: INDIGO-DataCloud
+  license: Apache
+  min_ansible_version: 2.0
+  platforms:
+  - name: Ubuntu
+    versions:
+    - trusty
+  galaxy_tags: 
+   - etcd
+
+dependencies: 
+   - { role: indigo-dc.docker }
