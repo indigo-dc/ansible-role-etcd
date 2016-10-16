@@ -3,8 +3,8 @@ Etcd Role
 
 [![Build Status](https://travis-ci.org/sochoa/ansible-role-etcd.svg?branch=master)](https://travis-ci.org/sochoa/ansible-role-etcd)
 [![Ansible Galaxy](https://img.shields.io/badge/galaxy-sochoa.etcd-blue.svg)](https://galaxy.ansible.com/sochoa/etcd/)
-[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/sochoa/ansible-role-docker.svg)](http://isitmaintained.com/project/sochoa/ansible-role-docker "Average time to resolve an issue")
-[![Percentage of issues still open](http://isitmaintained.com/badge/open/sochoa/ansible-role-docker.svg)](http://isitmaintained.com/project/sochoa/ansible-role-docker "Percentage of issues still open")
+[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/sochoa/ansible-role-etcd.svg)](http://isitmaintained.com/project/sochoa/ansible-role-etcd "Average time to resolve an issue")
+[![Percentage of issues still open](http://isitmaintained.com/badge/open/sochoa/ansible-role-etcd.svg)](http://isitmaintained.com/project/sochoa/ansible-role-etcd "Percentage of issues still open")
 
 Configure and start an Etcd cluster via docker.
 
