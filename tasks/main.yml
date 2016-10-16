@@ -30,3 +30,10 @@
     restart_policy: always
   tags:
     - etcd
+
+- name: Wait for EtcD to become available
+  wait_for:
+    port: "{{etcd_client_port}}"
+    timeout: 3
+    state: started # aka "open"
+    host: "{{ etcd_client_ipaddress }}"
