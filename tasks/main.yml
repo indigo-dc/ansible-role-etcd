@@ -1,12 +1,22 @@
+# Ref:  https://github.com/ansible/ansible-modules-core/issues/3423
+#
+#   Unable to use docker_image due to above referenced issue.
+#
+- name: pull etcd image
+  shell: "docker pull {{ etcd_docker_image }}:{{etcd_docker_tag}}"
+
+- name: create the etcd data dir on the docker host
+  shell: mkdir -p "{{etcd_data_dir}}"
+
 - name: run etcd container
-  docker:
+  docker_container:
     name: etcd
-    image: "{{ etcd_image }}"
-    state: reloaded
+    image: "{{ etcd_docker_image }}:{{ etcd_docker_tag }}"
+    state: started
     detach: true
-    ports:
-    - "2380:2380"
-    - "2379:2379"
+    recreate: true
+    ports: "{{etcd_docker_ports}}"
+    volumes: "{{etcd_docker_volumes}}"
     env:
       ETCD_NAME: "{{ etcd_name }}"
       ETCD_ADVERTISE_CLIENT_URLS: "{{ etcd_advertise_client_urls }}"
@@ -16,7 +26,7 @@
       ETCD_INITIAL_CLUSTER: "{{ etcd_initial_cluster }}"
       ETCD_INITIAL_CLUSTER_TOKEN: "{{ etcd_initial_cluster_token }}"
       ETCD_INITIAL_CLUSTER_STATE: "{{ etcd_initial_cluster_state }}"
+      ETCD_DATA_DIR: "{{ etcd_data_dir }}"
     restart_policy: always
   tags:
     - etcd
-

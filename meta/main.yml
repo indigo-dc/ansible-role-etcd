@@ -1,15 +1,20 @@
 galaxy_info:
   author: marica.antonacci@gmail.com
-  description: Configure and run dockerized etcd
+  description: Configure and run an EtcD cluster with docker
   company: INDIGO-DataCloud
   license: Apache
   min_ansible_version: 2.0
+
   platforms:
+
   - name: Ubuntu
     versions:
     - trusty
-  galaxy_tags: 
-   - etcd
 
-dependencies: 
-   - { role: indigo-dc.docker }
+  - name: RHEL
+    versions:
+    - 7
+
+  galaxy_tags:
+   - etcd
+   - docker

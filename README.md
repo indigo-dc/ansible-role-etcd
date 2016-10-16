@@ -1,25 +1,36 @@
 Etcd Role
 =========
 
-Configure and start etcd in a docker container using the image `quay.io/coreos/etcd:latest`. 
+Configure and start an Etcd cluster via docker.
 
-This role has been specifically developed to be used for the deployment of calico in the framework of INDIGO-DataCloud project.
+Links
+-----
+
+* [EtcD Docker Image](https://quay.io/repository/coreos/etcd)
+* [EtcD Documentation](https://coreos.com/etcd/docs/latest)
+* [EtcD Clustering Guide](https://coreos.com/etcd/docs/latest/clustering.html)
+* [EtcD Cluster Tuning](https://coreos.com/etcd/docs/latest/clustering.html)
 
 Role Variables
 --------------
-- `etcd_peers` (optional): list of etcd nodes - alternatively, you can use a proper inventory file specifying the hosts group [etcd_servers]
+
+- `etcd_peers` (optional): list of etcd nodes - Alternatively, you can use a proper inventory file specifying a host group titled `etcd_peers`.
 
 Dependencies
 ------------
 
-- `indigo-dc.docker`
+- **Docker**:  It is recommend a widely used Ansible Galaxy role for docker such as [dochang.docker](https://galaxy.ansible.com/dochang/docker) which has been successfully managing docker on modern Ubuntu and modern RHEL.
 
 Example Playbook
 ----------------
 
     - hosts: servers
       roles:
-         - { role: indigo-dc.etcd, etcd_peers: ["10.10.10.1", "10.10.10.2", "10.10.10.3"] }
+         - role: indigo-dc.etcd
+           etcd_peers:
+             - 10.10.10.1
+             - 10.10.10.2
+             - 10.10.10.3
 
 License
 -------
@@ -28,3 +39,9 @@ Apache Licence v2 [1]
 
 [1] http://www.apache.org/licenses/LICENSE-2.0
 
+Contributors
+------------
+
+- [Marica Antonacci](https://github.com/indigo-dc) - Initial creator and Jinja master
+
+- [Sean Ochoa](https://github.com/sochoa) - Contributor testing on RHEL and uplifting to use `docker_container`
